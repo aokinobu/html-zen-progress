@@ -1,5 +1,4 @@
 class ZenProgress extends HTMLElement {
-  dis = false;
   // A getter/setter for an open property.
   get open() {
     return this.hasAttribute("open");
@@ -21,6 +20,7 @@ class ZenProgress extends HTMLElement {
   }
 
   set disabled(val) {
+    console.log("settings to " + val);
     // Reflect the value of the disabled property as an HTML attribute.
     if (val) {
       this.setAttribute("disabled", "");
@@ -47,16 +47,16 @@ class ZenProgress extends HTMLElement {
   }
 
   toggleDrawer() {
-    if (this.dis) {
+    console.log("click");
+    console.log(this.disabled);
+    if (this.disabled) {
       this.innerHTML = "true";
-      console.log(this.dis);
-      this.dis = !this.dis;
-      console.log(this.dis);
+      this.disabled(true)
+      console.log(this.disabled);
     } else {
       this.innerHTML = "false";
-      console.log(this.dis);
-      this.dis = !this.dis;
-      console.log(this.dis);
+      this.disabled("false");
+      console.log(this.disabled);
     }
   }
 }
